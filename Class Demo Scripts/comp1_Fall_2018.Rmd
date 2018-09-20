@@ -1,0 +1,133 @@
+---
+title: "COMP1 Your first R assignment for BUS212"
+author: "Prof Carver"
+date: "September 2018"
+output:
+  word_document: default
+  html_document:
+    df_print: paged
+---
+
+## Introduction
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code.  This document has three purposes: 
+
+1. to demonstrate the use of RStudio's _Notebook_ capability
+2. to illustrate/ review some useful r packages for preparing and plotting data
+3. to explain the requirements of the first COMP assignment. You should be able to use this Notebook `*.rmd` file as a guide to complete the assignment as well.
+
+This document first uses the `BostonHousing.csv` data file from Chapter 3 of our text, and demonstrates a series of tasks and code chunks that you can use to complete the following tasks.
+
+After examining the RMD file that created this document, YOU will complete an assignment using the data from Chapter 2.
+
+## Your Assignment
+
+After reviewing these examples you'll again work with the `WestRoxbury.csv` data from Chapter 2 to answer 5 questions showsn here. This is an individual assignment; if you need help, talk to Prof. Carver or the TAs, but not to classmates.
+
+Your assignment is to create an attractive, professional-quality report using an R Notebook in which you:
+
+1.   Read in the data
+2.   Create a titled and labeled scatterplot of Tax vs. Total Value, including a fitted line (simple regression with lm)
+3.   Report the formula that the City uses to compute the tax assessment on a property, AND explain why the Chapter 2 multiple regression model removed TAX from the model specification.
+4.   Create a side-by-side boxplot display showing variation in Total Value by the number of full bathrooms in a home (HINT: treat the number of bathrooms as a *factor*) 
+5.   Comment on your impression of how property value varies with the number of bathrooms in a house. 
+
+Note that your comments and written explanations are as important as the correctness of the two simple graphs. 
+
+One bit of background may be helpful:  In Massachusetts, cities and towns raise much of their operating revenues by taxing real estate. Typically, the tax on a property is a fixed percentage of the market valuation. In the WestRoxbury dataset, the TAX column reflects the annual tax owed on each piece of real estate. In other words, TAX is a linear function of the property value.  
+
+The main goals of this assignment are to review your knowledge of R and to learn a bit about R Notebooks.
+
+## R Markdown and Notebooks
+Before going too far into this exercise, please review the online materials at [R Markdown](http://rmarkdown.rstudio.com). The pages at that site explain the general ideas, and also show specific syntax and commands for formatted text and for code chunks. 
+
+> I highly recommend using RStudio's "cheatsheets" for help with Markdown, Notebooks, ggplot2, dplyr and other useful packages. See the Help menu: ![](C:\Users\Rob\Box Sync\My R Work\images\RScheatsheets.png)
+
+Unlike the textbook, which calls packages as needed within a script, I recommend calling (`library` command) packages early on in a script. Either way works, but placing them all together allows a reader to find them easily.
+
+Since `library` often generates messages and warnings that won't add to my finished document, I recommend adding the  `warning = FALSE` and `message = FALSE` in the chunk options:
+
+```{r, warning=FALSE, message=FALSE}
+library(tidyverse)   # loads a number of helpful Hadley Wickham packages
+library(ggplot2)     # way better than Base plotting
+library(readr)       # allows to read csv files as "tibbles"
+library(tidyr)       # newer replacement for package Reshape
+```
+
+## Boston Housing Example (adapted from Section 3.3 of our text) 
+# Use this as a guide for YOUR notebook code
+In Chapter 3, Example 2 is about Amtrak ridership. We'll reproduce the chapter 3 code chunks here, and add some more commands to illustrate why and how we might wish to "tidy" and plot the data.
+_NOTE_: In a markdown file, you *must* specify the entire file path when reading a csv file. 
+
+The BostonHousing data is published at the University of California, Irvine Machine Learning Repository [UCIMLR](https://archive.ics.uci.edu/ml/datasets/Housing); the original publication source is given in a footnote on p. 57, and each observation is one census tract in Boston.
+
+All variables (columns) in the table are defined in _Table 3.1_ on p. 58 of the text. 
+
+ALSO: here we demonstrate the `readr` command `read_csv` and compare the resulting dataframe to the more conventional results of `read.csv'. Package `readr` is part of the "tidyverse" family of packages. Think of these as updates and improvements to some of the older packages. 
+
+```{r, message=FALSE, echo=TRUE}
+
+housing.df <- read.csv("C:/Users/Rob/Box Sync/My R Work/BUS212/Data/BostonHousing.csv")
+
+head(housing.df,9)  #  top 9 rows of data, as in Table 3.2
+```
+
+Now let's see the structure and a `glimpse` of the tibble:
+
+```{r}
+housing.tbl <- read_csv("C:/Users/Rob/Box Sync/My R Work/BUS212/Data/BostonHousing.csv")
+head(housing.tbl,9) #  Note additional metadata
+
+# glimpse is a tidyr function to examine the structure of a tibble
+glimpse(housing.tbl)  
+```
+
+In the chapter, Figures 3.1 and 3.2 shows some simple graphs, and include both the base r plotting functions and code using `ggplot2`. Here we just use ggplot2, which I will encourage us to adopt as a standard for most of the course. This code chunk is adapted from the textbook, first creating a scatterplot similar to the one in the upper right of Figure 3.1. For added information, I've colored the points to indicate which tracts border the Charles River.
+
+```{r}
+# Create the plot object, p, in layers and then display
+p <- ggplot(housing.tbl, aes(x=LSTAT, y=MEDV, color=as.factor(CHAS))) +
+     geom_point(alpha = 0.7)  # alpha controls the transparency of the points 
+p + ggtitle("Boston Median Value \nby Percent Low Income & Proximity to River")
+     
+```
+
+We might also add a smoother to the plot:
+
+```{r}
+p + geom_smooth() +
+     ggtitle("Boston Median Value \nby Percent Low Income & Proximity to River")
+
+```
+
+
+In Figure 3.2, we find two distributional graphs of MEDV. We start with a histogram:
+
+```{r}
+hist <- ggplot(housing.tbl) +
+     geom_histogram(aes(x=MEDV), fill="darkblue", binwidth = 5) +
+     ggtitle("Median Values of Boston Housing") + 
+     xlab("Median Home Value (000s)")
+hist
+```
+
+And then, the side-by-side boxplots of Median Values for properties that do and do not bound the Charles River. For improved labels, let's create a new factor for the second variable, and assign descriptive level names: 
+
+```{r}
+housing.tbl$river <- factor(housing.tbl$CHAS, labels=c("No", "Yes"))
+bp <- ggplot(housing.tbl) +
+     geom_boxplot((aes(x=river, y=MEDV))) + 
+     xlab("Does Tract Bound the Charles River?") +
+     ylab("Median Value (000s)") +
+     ggtitle("Does Bordering the River Affect Housing Value?")
+bp
+```
+
+## Conclusion
+There you are: an example of an R Notebook that weaves together text, graphs, and R Code using tidy tibbles and ggplot2!
+
+After writing and testing the code, choose the knit button ![](C:\Users\Rob\Box Sync\My R Work\images\knitbutton.png)
+
+to knit it to a *Word* document, which you should then upload to LATTE along with your RMD file. In other words, upload TWO (2) files:  your RMD and your Word.
+
+
+
