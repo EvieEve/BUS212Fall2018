@@ -1,0 +1,51 @@
+id,host_id,host_name,host_since,host_response_time,host_response_rate,neighbourhood,neighbourhood_cleansed,city,zipcode,smart_location,latitude,longitude,is_location_exact,property_type,room_type,accommodates,bathrooms,bedrooms,beds,square_feet,price,weekly_price,monthly_price,security_deposit,cleaning_fee,minimum_nights,maximum_nights,availability_90
+3344322,9898255,Jessica,11/9/2013,within an hour,98%,Dorchester,Dorchester,Boston,2125,"Boston, MA",42.31254826,-71.06227257,t,House,Private room,2,2.5,1,1,,70,450,,0,10,2,1125,68
+4484798,16442921,Orchid,6/5/2014,within an hour,97%,,Dorchester,Boston,2125,"Boston, MA",42.31846857,-71.05096301,t,Apartment,Private room,2,1,1,1,,68,475,1700,100,49,2,75,72
+6544642,21895391,Michael,9/28/2014,within a few hours,100%,South Boston,South Boston,Boston,2127,"Boston, MA",42.33498122,-71.03445098,f,Apartment,Entire home/apt,2,1,0,1,,250,,,0,,2,1125,37
+8025718,22348222,Maverick,10/9/2014,within an hour,100%,South End,South End,Boston,2116,"Boston, MA",42.34341272,-71.07604008,t,Apartment,Entire home/apt,2,1,0,1,,150,,,,65,3,1125,50
+8165898,30283594,Kara,3/30/2015,within a few hours,97%,Fenway/Kenmore,Fenway,Boston,2215,"Boston, MA",42.34337636,-71.10127794,t,Apartment,Entire home/apt,5,2,2,3,,189,,9145,,100,2,1000,89
+9145242,41542719,Ivan,8/15/2015,within an hour,100%,East Boston,East Boston,East Boston,2128,"East Boston, MA",42.37629762,-71.03298866,t,House,Private room,2,1,1,1,,61,,,100,30,1,30,69
+9239512,4898519,Dave,1/29/2013,within a day,100%,Back Bay,Back Bay,Boston,2116,"Boston, MA",42.34697836,-71.07974589,t,Apartment,Entire home/apt,5,1.5,2,2,,110,,3400,800,90,14,60,37
+9393163,47487818,Kayla,10/26/2015,N/A,N/A,Fenway/Kenmore,Fenway,Boston,2215,"Boston, MA",42.35076325,-71.09525948,t,Apartment,Private room,2,1,1,1,,90,,,,,2,1125,0
+9452993,14980513,Yair,11/13/2015,within a day,100%,Fenway/Kenmore,Fenway,Boston,2115,"Boston, MA",42.34570558,-71.08952424,t,Apartment,Private room,2,1,1,1,,60,320,1200,,15,5,1125,34
+10033976,30283594,Kara,3/30/2015,within a few hours,97%,Chinatown,Chinatown,Boston,2111,"Boston, MA",42.3514618,-71.059311,t,Apartment,Entire home/apt,3,1,1,2,,140,,,,100,14,1125,90
+11740527,6950436,Jonathan,6/16/2013,within an hour,100%,South Boston,South Boston,Boston,2127,"Boston, MA",42.32999627,-71.05431806,t,House,Private room,3,1,1,1,,85,,,100,40,1,1125,56
+11896394,13263766,Olechka,3/18/2014,within an hour,100%,Allston-Brighton,Allston,Boston,2134,"Boston, MA",42.3485404,-71.13754549,f,Apartment,Entire home/apt,3,1,1,2,,80,600,,100,60,5,1125,44
+12492474,67637928,Yuki,4/17/2016,N/A,N/A,Dorchester,Mattapan,Boston,2126,"Boston, MA",42.27398863,-71.0708349,t,House,Private room,1,1,1,1,,35,280,1000,,,14,363,0
+12854553,8907338,Abhay,9/18/2013,N/A,N/A,Fenway/Kenmore,Fenway,Boston,2215,"Boston, MA",42.34823296,-71.09454744,t,Apartment,Private room,2,1,1,2,,75,,,,10,1,11,0
+13079659,12243051,Sonder,2/14/2014,within an hour,99%,Chinatown,Chinatown,Boston,2111,"Boston, MA",42.35127067,-71.06198574,t,Apartment,Entire home/apt,4,2,2,2,,259,,,400,122,2,1125,88
+13685592,12243051,Sonder,2/14/2014,within an hour,99%,Allston-Brighton,Allston,Boston,2134,"Boston, MA",42.34927683,-71.13074081,t,Apartment,Entire home/apt,6,2,3,3,,209,,,400,153,2,1124,66
+14186170,8985714,Tj,9/22/2013,within a day,70%,South Boston,South Boston,Boston,2127,"Boston, MA",42.33345441,-71.04789353,t,Condominium,Entire home/apt,3,1,1,1,,180,,,0,50,1,1125,90
+14422439,4962900,Stay Alfred,2/4/2013,within an hour,100%,Back Bay,Back Bay,Boston,2116,"Boston, MA",42.34614524,-71.08002038,t,Apartment,Entire home/apt,5,2,2,2,,429,,,,119,2,1125,42
+14553190,42756180,Sara,8/28/2015,N/A,N/A,Fenway/Kenmore,Fenway,Boston,2215,"Boston, MA",42.34125006,-71.09839568,t,Apartment,Entire home/apt,4,1,0,1,,275,,,,,1,1125,0
+14685769,91169115,Ellen,8/21/2016,within a day,100%,Mission Hill,Mission Hill,Roxbury Crossing,2120,"Roxbury Crossing, MA",42.33323018,-71.10181101,t,Townhouse,Private room,1,1,1,1,,55,,,,,12,1125,5
+15264864,3023813,Cm,7/23/2012,within an hour,70%,Back Bay,Back Bay,Boston,2116,"Boston, MA",42.35276283,-71.08085148,t,Apartment,Entire home/apt,4,1,1,1,,235,,,100,40,7,60,46
+15990488,91480383,Yasmina And Elizabeth,8/23/2016,N/A,N/A,East Boston,East Boston,Boston,2128,"Boston, MA",42.37094579,-71.03435334,t,Apartment,Private room,2,1,1,1,,70,,,100,20,2,31,0
+16453582,25149641,Kiki,12/23/2014,within an hour,99%,Dorchester,Dorchester,Boston,2125,"Boston, MA",42.31946614,-71.05327781,t,Apartment,Private room,3,1,1,1,,60,,,0,80,1,1125,81
+18126639,4491477,Cory,12/25/2012,within an hour,100%,North End,North End,Boston,2113,"Boston, MA",42.36537191,-71.05678666,t,Apartment,Entire home/apt,3,1,1,1,,250,,,,49,2,21,22
+18537967,90527363,Haiying,8/17/2016,within an hour,100%,Chinatown,Chinatown,Boston,2111,"Boston, MA",42.34864358,-71.06181968,t,Apartment,Entire home/apt,5,1,2,4,,179,,,100,80,1,60,51
+18790023,9705586,Estuardo,10/29/2013,within an hour,100%,Roslindale,Roslindale,Boston,2131,"Boston, MA",42.27818823,-71.13496119,t,Apartment,Private room,3,1,1,2,,55,,,0,30,2,1124,67
+19225442,48627982,Matt,11/9/2015,N/A,N/A,Back Bay,Back Bay,Boston,2115,"Boston, MA",42.35145883,-71.08855362,t,Apartment,Private room,2,1,1,1,,93,,,,,180,1125,0
+19498285,136896833,Thao,6/25/2017,within an hour,100%,Dorchester,Dorchester,Boston,2124,"Boston, MA",42.2876516,-71.06370667,t,Apartment,Private room,2,1,1,2,,70,,,,55,2,1125,43
+19658035,5277243,Chris,3/1/2013,N/A,N/A,East Boston,East Boston,Boston,2128,"Boston, MA",42.37037524,-71.03245976,t,Apartment,Entire home/apt,3,1,1,1,,149,,,0,25,1,10,0
+20237485,8681383,Elsa,9/7/2013,N/A,N/A,Mission Hill,Mission Hill,Boston,2115,"Boston, MA",42.33308756,-71.11222704,t,Apartment,Private room,1,1,1,1,,45,,,100,10,1,1125,0
+21445242,1118374,Matthew,9/6/2011,within an hour,99%,Charlestown,Charlestown,Boston,2129,"Boston, MA",42.37501354,-71.05280376,t,Apartment,Entire home/apt,5,1,2,4,,77,,,0,40,1,1125,70
+21515982,25103598,Elizabeth,12/22/2014,within a few hours,100%,West Roxbury,West Roxbury,Boston,2132,"Boston, MA",42.28715087,-71.16811338,t,House,Private room,2,1.5,1,1,,100,,,0,35,1,7,1
+21663547,100694816,Monty,10/21/2016,N/A,N/A,Allston-Brighton,Brighton,Boston,2135,"Boston, MA",42.34172415,-71.15059378,t,Apartment,Private room,2,1,1,1,,45,,,0,10,1,30,0
+21849098,12243051,Sonder,2/14/2014,within an hour,99%,Allston-Brighton,Allston,Boston,2134,"Boston, MA",42.35593083,-71.13557576,t,Apartment,Entire home/apt,4,1,2,2,,699,,,400,110,2,1124,87
+21924790,11570420,Shalaye,1/23/2014,within an hour,100%,Mattapan,Mattapan,Boston,2126,"Boston, MA",42.28486277,-71.09440695,t,Apartment,Entire home/apt,8,1,3,4,,115,,,275,69,1,1125,21
+22200077,29628179,Kelsey,3/19/2015,within an hour,100%,South End,South End,Boston,2116,"Boston, MA",42.34426843,-71.0724231,t,Apartment,Entire home/apt,4,1,2,2,,300,,,0,60,1,5,3
+22599383,12243051,Sonder,2/14/2014,within an hour,99%,South End,South End,Boston,2118,"Boston, MA",42.33903093,-71.07930934,t,Apartment,Entire home/apt,4,2,2,2,,699,,,400,110,2,1125,90
+22879028,163251048,Jen,12/19/2017,within a day,89%,Fenway/Kenmore,Fenway,Boston,2215,"Boston, MA",42.34483003,-71.10210274,t,Apartment,Entire home/apt,5,2,2,2,,269,,,0,100,3,1125,89
+22920165,245067,Audrey,9/25/2010,N/A,N/A,Allston-Brighton,Brighton,Boston,2135,"Boston, MA",42.34763657,-71.17010013,t,House,Entire home/apt,5,3.5,3,3,,1000,,,2500,0,29,90,45
+23020222,170792846,Christopher,1/30/2018,within an hour,100%,South Boston,South Boston,Boston,2127,"Boston, MA",42.33778716,-71.05022499,f,House,Entire home/apt,4,1,1,4,,150,,,150,50,2,1125,4
+23053917,112612921,Shariq,1/21/2017,N/A,N/A,Allston-Brighton,Allston,Boston,2134,"Boston, MA",42.34882986,-71.13819766,t,Apartment,Private room,2,1,1,1,,40,,,,,1,13,0
+23054149,171113060,Daniel,2/1/2018,within a few hours,100%,Hyde Park,Hyde Park,Boston,2136,"Boston, MA",42.24190962,-71.1372645,t,House,Private room,1,2,1,1,,45,,,200,50,2,1125,71
+23322393,12243051,Sonder,2/14/2014,within an hour,99%,Fenway/Kenmore,Longwood Medical Area,Boston,2215,"Boston, MA",42.34249528,-71.10303976,t,Apartment,Entire home/apt,2,1,1,1,,699,,,400,99,2,1125,80
+23687980,133927887,Alex & Kat,6/7/2017,within an hour,100%,Back Bay,Back Bay,Boston,2115,"Boston, MA",42.34567434,-71.08594712,t,Apartment,Entire home/apt,7,1,3,3,,325,,,100,95,2,1125,5
+23956989,180140685,Steven,3/23/2018,within an hour,100%,Roxbury,Roxbury,Boston,2121,"Boston, MA",42.30927974,-71.08416596,t,Apartment,Private room,2,1,1,1,,46,,,100,20,1,60,67
+24232976,41932249,Ann,8/19/2015,within an hour,100%,Roxbury,Roxbury,Boston,2118,"Boston, MA",42.33701736,-71.0793209,t,Apartment,Private room,2,2,1,1,,69,,,150,39,1,1125,31
+25114970,169338237,Samantha,1/22/2018,within an hour,100%,Back Bay,Bay Village,Boston,2116,"Boston, MA",42.34987151,-71.06897969,t,Apartment,Private room,4,1,1,1,,150,,,,,1,29,0
+25571479,188208439,Adi,5/6/2018,within an hour,100%,Allston-Brighton,Allston,Boston,2134,"Boston, MA",42.35042593,-71.14090053,t,Apartment,Private room,2,1,1,1,,39,,,0,25,2,7,2
+26246423,52165995,Brian,12/24/2015,within an hour,100%,Jamaica Plain,Jamaica Plain,Boston,2130,"Boston, MA",42.3119484,-71.10121408,t,Apartment,Entire home/apt,3,1,1,1,,150,,,0,30,4,1125,1
+27527176,207623401,The Ritz Concept,8/5/2018,within an hour,100%,Financial District,Downtown,Boston,,"Boston, MA",42.35302389,-71.05764508,f,Apartment,Entire home/apt,4,1,1,2,,249,,,250,59,2,1125,68
