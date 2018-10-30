@@ -51,8 +51,8 @@ midpoints <- barplot(heights, names.arg = gain$depth, ylim = c(0,9),
 # add labels to columns
 text(midpoints, heights+0.5, labels=round(heights, 1), cex = 0.8)
 
-confusionMatrix(ifelse(logit.reg$fitted > 0.5, 1, 0), train.df[,8])
-confusionMatrix(ifelse(logit.reg$fitted > 0.4, 1, 0), train.df[,8])
+confusionMatrix(factor(ifelse(logit.reg$fitted > 0.5, 1, 0)), factor(train.df[,8]))
+confusionMatrix(factor(ifelse(logit.reg$fitted > 0.4, 1, 0)), factor(train.df[,8]))
 
 
 #### Figure 10.4
@@ -165,5 +165,5 @@ summary(lm.fit)
 # evaluate
 library(caret)
 pred <- predict(lm.fit, valid.df)
-confusionMatrix(ifelse(pred > 0.5, 1, 0), valid.df$isDelay)
+confusionMatrix(factor(ifelse(pred > 0.5, 1, 0)), factor(valid.df$isDelay))
 
