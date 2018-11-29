@@ -1,0 +1,128 @@
+---
+title: "Topic Modeling with airbnb reviews"
+author:  Robert Carver
+output:
+  html_document:
+    df_print: paged
+  html_notebook: default
+  word_document: default
+---
+
+## Introduction
+Topic Modeling is the third and final text mining area that we will study. It strongly resembles cluster analysis, in the sense that we ask the algorithm to infer conceptual topics from a body of document, based on the comparative freqency of observed associations.
+
+While Cluster Analysis is based on distances and numeric data, Topic Modeling is based on conditional probabilities and (obviously) text data.
+
+In addition to the packages we've used previously for text mining, we introduce the `topicmodels` package. Install the package before calling it. 
+
+As an illustrative example, we'll use the airbnb reviews that are part of your next assignment.
+
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(tidytext)
+library(topicmodels)
+
+```
+
+
+## Prepare a tidy tibble of text
+
+Similar to the approach in "Analyzing Phrases with Tidytext", we create a tibble from the airbnb reviews. This will give you a head start on part of the next assignment.
+
+Also note that the `tidytext` package converts text to lowercase by default.
+
+There are more than 50,000 essays in this collection. To speed the analysis, we randomly sample 1,000 of them.
+
+One other note: in `tidytext`, the `stop_words` dataframe has 2 columns: a word, and a source lexicon. Below, we add some custom terms to the list starting with 2 vectors: one for terms, and one that simply identifies a "custom" lexicon.
+
+```{r, message=FALSE, warning=FALSE}
+setwd("C:/Users/Rob/Box Sync/My R Work/BUS212")
+
+set.seed(3928)
+rev <- read_csv("Data/reviews.csv")
+rev <- na.omit(rev) # delete null reviews
+samp_rev <- rev[sample(nrow(rev),1000),]
+
+tidy_review <- select_(samp_rev,"comments") 
+
+n <- nrow(tidy_review)
+tidy_review <- data_frame(review=1:n, text=samp_rev$comments)
+
+# Tokenize, remove stop words and NAs
+data("stop_words")
+#  Add some custom stop words, just to illstrate
+myterms <- c("airbnb","very", "boston","stay")
+mylex <- rep("custom", length(myterms))
+myStopwords <- data.frame(word=myterms, lexicon=mylex)
+myStopwords <- rbind(stop_words, myStopwords)
+
+#Term frequencies across essays
+review_words <- tidy_review %>%
+     unnest_tokens(word, text) %>%
+     anti_join(myStopwords) %>%
+     count(review, word, sort=TRUE) %>%
+     ungroup()
+
+total_words <- review_words %>%
+     group_by(review) %>%
+     summarize(total = sum(n))
+
+review_words <- left_join(review_words, total_words)
+
+#  now tf_idf
+review_words <- review_words %>%
+     bind_tf_idf(word, review, n) %>%
+     arrange(desc(tf_idf))
+glimpse(review_words)
+
+```
+
+## Create a DTM
+The `LDA()` function operates on a Document Term Matrix (DTM), so we need to create a DTM from the reviews.  Some of the code in this section comes from unassigned chapters in Silge and Robinson's book. 
+We now have a large dataframe containing all of the word counts by review. We cast that into a document term matrix.
+
+
+```{r}
+our_dtm <- review_words %>%
+     cast_dtm(review, word, n)
+our_dtm
+
+```
+
+Topic modeling requires that we select a number of topics to find in the corpus. Of course, we don't know how many topics are "lurking" in these essays, so we undertake some trial and error. For this demo, we'll begin by looking for five distinct topics.
+
+```{r}
+our_lda <- LDA(our_dtm, k = 5, control = list(seed = 1948))
+our_lda
+```
+
+## Word-topic probabilities
+We start inspecting the potential topics by looking at word frequencies -- which words occur most commonly within each topic?  We'll create an oject containing the topics that the algorithm has identified along with *beta*, the conditional probability that the word appears, given the topic. 
+Here we look at the 10 most frequent words within each topic.
+
+```{r}
+rev_topics <- tidy(our_lda, matrix = "beta")
+rev_top_terms <- rev_topics %>%
+  group_by(topic) %>%
+  top_n(10, beta) %>%
+  ungroup() %>%
+  arrange(topic, -beta)
+
+rev_top_terms %>%
+  mutate(term = reorder(term, beta)) %>%
+  ggplot(aes(term, beta, fill = factor(topic))) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ topic, scales = "free") +
+  coord_flip()
+```
+
+## gamma analysis
+
+Beta refers to P(word|topic). *gamma* is the per-document likelihood of each topic. In the code below, for example, we see how the algorithm allocates topics across the first three reviews.
+
+
+```{r}
+rev_documents <- tidy(our_lda, matrix = "gamma")
+rev_documents <- arrange(rev_documents, document)
+rev_documents
+```
